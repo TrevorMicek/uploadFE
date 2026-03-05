@@ -1,0 +1,18 @@
+---
+import React from "react"
+import Layout from "../components/layout.astro"
+import Form from '../components/Contact.jsx'
+---
+  <Layout title="Contact" text="We would love to hear from you!">
+   
+    <Form client:load />
+  <div class="pb-12 bg-white flex grow justify-center">
+    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+    <script is:inline>
+      hbspt.forms.create({
+        portalId: "47413956",
+        formId: "a1bb54c0-1145-4512-9e54-f401e1910437"
+      });
+    </script>
+    </div>
+  </Layout>

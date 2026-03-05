@@ -1,0 +1,18 @@
+---
+import React from "react"
+import Layout from "../components/layout.astro"
+
+
+
+import ProductBenefit from "../components/ProductBenefit";
+import FAQ from '../components/FAQs'
+import CTA from '../components/CTA'
+---
+  <Layout title="Services" >
+    
+    <ProductBenefit client:load />
+    <FAQ client:load />
+    <CTA />
+
+
+  </Layout>
