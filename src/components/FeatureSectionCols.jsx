@@ -56,11 +56,11 @@ export default function FeatureSection() {
         method: "POST",
         body: formData, // The browser sets the Content-Type header automatically
       });
-      GetPage()
+      GetPage("images")
         .then((res) => res.json())
         .then(
           (data) => {
-            setGetData(data.filenames);
+            setGetImages(data.filenames);
           },
           (error) => {
             console.log(error);
@@ -76,18 +76,21 @@ export default function FeatureSection() {
       console.error("Error during upload:", error);
     }
   };
-  const deleteFile = async (fileName) => {
+  const deleteFile = async (fileName, type) => {
     try {
-      const response = await fetch(`http://localhost:3000/data/${fileName}`, {
-        method: "POST",
-        body: fileName, // The browser sets the Content-Type header automatically
-      }).then(
-        GetPage()
+      const response = await fetch(
+        `http://localhost:3000/data/${type}/${fileName}`,
+        {
+          method: "POST",
+          body: fileName, // The browser sets the Content-Type header automatically
+        },
+      ).then(
+        GetPage("images")
           .then((res) => res.json())
           .then(
             (data) => {
               console.log("retrieve data");
-              setGetData(data.filenames);
+              setGetImages(data.filenames);
             },
             (error) => {
               console.log(error);
@@ -107,14 +110,14 @@ export default function FeatureSection() {
   };
   const ImageGallery = () => (
     <div className="flex flex-row flex-wrap gap-6  justify-center">
-      {getData &&
-        getData.map((item) => (
+      {getImages &&
+        getImages.map((item) => (
           <div className="w-52 h-auto relative">
             <div className="group w-52 h-full absolute z-10 hover:bg-black/20 ">
               <div className="opacity-0 mx-2 flex justify-between group-hover:opacity-100">
                 <a
-                  href={`http://localhost:3000/images/${item}`}
-                  download={item}
+                  href={`http://localhost:3000/data/images/${item}`}
+                  download={`http://localhost:3000/data/images/${item}`}
                   className="cursor-pointer"
                 >
                   <svg
@@ -132,8 +135,24 @@ export default function FeatureSection() {
                     />
                   </svg>
                 </a>
+                <a className="cursor-pointer">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6 pt-2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                    />
+                  </svg>
+                </a>
                 <button
-                  onClick={() => deleteFile(item)}
+                  onClick={() => deleteFile(item, "images")}
                   className="cursor-pointer text-lg"
                 >
                   x
@@ -141,9 +160,66 @@ export default function FeatureSection() {
               </div>
             </div>
             <img
-              src={`http://localhost:3000/data/${item}`}
+              src={`http://localhost:3000/data/images/${item}`}
               className=" border-2 border-white"
             />
+          </div>
+        ))}
+    </div>
+  );
+  const FileComp = () => (
+    <div className="flex flex-row flex-wrap gap-6  justify-center">
+      {getFiles &&
+        getFiles.map((item) => (
+          <div className="w-52 h-auto relative mt-5">
+            <div className="group w-52 h-full absolute z-10 hover:bg-black/20 ">
+              <div className="border-2 border-white px-2 opacity-100 mx-2 flex justify-between group-hover:opacity-100">
+                <div className="border-r-2 pr-2">PDF</div>
+                <div>{item}</div>
+                <a
+                  href={`http://localhost:3000/data/files/${item}`}
+                  download={`http://localhost:3000/data/files/${item}`}
+                  className="cursor-pointer"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6 pt-2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+                    />
+                  </svg>
+                </a>
+                <a className="cursor-pointer">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6 pt-2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                    />
+                  </svg>
+                </a>
+                <button
+                  onClick={() => deleteFile(item, "files")}
+                  className="cursor-pointer text-lg"
+                >
+                  x
+                </button>
+              </div>
+            </div>
           </div>
         ))}
     </div>
@@ -153,7 +229,7 @@ export default function FeatureSection() {
       case images:
         return <ImageGallery />;
       case files:
-        return <div>files go here</div>;
+        return <FileComp />;
       default:
         return (
           <div className="text-white flex flex-row space-x-10 mx-auto">

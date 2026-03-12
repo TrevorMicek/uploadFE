@@ -5,7 +5,7 @@ const getUrl = (page, origin) => {
     if (origin) {
       return `http://localhost:4321`;
     } else {
-      return `http://localhost:3000/${page}`;
+      return `http://localhost:3000/data/${page}`;
     }
   } else {
     if (origin) {
