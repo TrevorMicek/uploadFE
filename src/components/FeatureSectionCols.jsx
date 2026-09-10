@@ -52,10 +52,13 @@ export default function FeatureSection() {
     formData.append("description", "A test file upload");
 
     try {
-      const response = await fetch("http://localhost:3000/upload", {
-        method: "POST",
-        body: formData, // The browser sets the Content-Type header automatically
-      });
+      const response = await fetch(
+        "https://uploadfe.webdevtrevor.workers.dev/",
+        {
+          method: "POST",
+          body: formData, // The browser sets the Content-Type header automatically
+        },
+      );
       GetPage("images")
         .then((res) => res.json())
         .then(
