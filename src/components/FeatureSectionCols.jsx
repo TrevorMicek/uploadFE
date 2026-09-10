@@ -160,7 +160,7 @@ export default function FeatureSection() {
               </div>
             </div>
             <img
-              src={`http://localhost:3000/data/images/${item}`}
+              src={`https://upload-pn3q.onrender.com/data/images/${item}`}
               className=" border-2 border-white"
             />
           </div>
