@@ -24,7 +24,6 @@ const UseFetch = (page) =>
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      "Access-Control-Allow-Origin": getUrl(page),
     },
     redirect: "follow",
     referrerPolicy: "no-referrer",
