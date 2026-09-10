@@ -79,7 +79,7 @@ export default function FeatureSection() {
   const deleteFile = async (fileName, type) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/data/${type}/${fileName}`,
+        `https://upload-pn3q.onrender.com/data/${type}/${fileName}`,
         {
           method: "POST",
           body: fileName, // The browser sets the Content-Type header automatically
@@ -116,7 +116,7 @@ export default function FeatureSection() {
             <div className="group w-52 h-full absolute z-10 hover:bg-black/20 ">
               <div className="opacity-0 mx-2 flex justify-between group-hover:opacity-100">
                 <a
-                  href={`http://localhost:3000/data/images/${item}`}
+                  href={`https://upload-pn3q.onrender.com/data/images/${item}`}
                   download={`http://localhost:3000/data/images/${item}`}
                   className="cursor-pointer"
                 >
