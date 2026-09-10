@@ -1,1 +1,0 @@
-import{r as e}from"./index.BeYlDD_L.js";function o(r,t){return e.createElement("svg",Object.assign({xmlns:"http://www.w3.org/2000/svg",fill:"none",viewBox:"0 0 24 24",strokeWidth:2,stroke:"currentColor","aria-hidden":"true",ref:t},r),e.createElement("path",{strokeLinecap:"round",strokeLinejoin:"round",d:"M5 13l4 4L19 7"}))}const s=e.forwardRef(o);export{s as F};

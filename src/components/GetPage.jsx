@@ -9,9 +9,9 @@ const getUrl = (page, origin) => {
     }
   } else {
     if (origin) {
-      return `https://platformservice.netlify.app`;
+      return `https://upload-pn3q.onrender.com/`;
     } else {
-      return `https://platform-server.onrender.com/API/page/${page}.json`;
+      return `https://upload-pn3q.onrender.com/data/${page}`;
     }
   }
 };
