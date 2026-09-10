@@ -9,7 +9,7 @@ const getUrl = (page, origin) => {
     }
   } else {
     if (origin) {
-      return `https://upload-pn3q.onrender.com/`;
+      return `https://uploadfe.webdevtrevor.workers.dev/`;
     } else {
       return `https://upload-pn3q.onrender.com/data/${page}`;
     }
@@ -24,7 +24,7 @@ const UseFetch = (page) =>
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      "Access-Control-Allow-Origin": "http://localhost:3000/",
+      "Access-Control-Allow-Origin": getUrl(page),
     },
     redirect: "follow",
     referrerPolicy: "no-referrer",
