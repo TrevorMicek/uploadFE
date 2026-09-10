@@ -28,7 +28,7 @@
     "react-dom": "^18.0.0",
     "react-router": "^7.2.0",
     "typescript": "^5.7.2",
-    "wrangler": "^4.128.0"
+    "wrangler": "3.28.2"
   },
   "devDependencies": {
     "eslint": "^8",
