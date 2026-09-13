@@ -52,7 +52,7 @@ export default function FeatureSection() {
     formData.append("description", "A test file upload");
 
     try {
-      const response = await fetch("https://upload-pn3q.onrender.com/upload", {
+      const response = await fetch("http://localhost:3000/upload", {
         method: "POST",
         body: formData, // The browser sets the Content-Type header automatically
       });
@@ -79,7 +79,7 @@ export default function FeatureSection() {
   const deleteFile = async (fileName, type) => {
     try {
       const response = await fetch(
-        `https://upload-pn3q.onrender.com/data/${type}/${fileName}`,
+        `http://localhost:3000/data/${type}/${fileName}`,
         {
           method: "POST",
           body: fileName, // The browser sets the Content-Type header automatically
@@ -109,7 +109,7 @@ export default function FeatureSection() {
     }
   };
   const ImageGallery = () => (
-    <div className="flex flex-row flex-wrap gap-6  justify-center">
+    <div className="flex flex-row flex-wrap gap-6 justify-center">
       {getImages &&
         getImages.map((item) => (
           <div className="w-52 h-auto relative">
@@ -117,7 +117,7 @@ export default function FeatureSection() {
               <div className="opacity-0 mx-2 flex justify-between group-hover:opacity-100">
                 <a
                   href={`https://upload-pn3q.onrender.com/data/images/${item}`}
-                  download={`http://localhost:3000/data/images/${item}`}
+                  download={`https://upload-pn3q.onrender.com/data/images/${item}`}
                   className="cursor-pointer"
                 >
                   <svg
@@ -245,7 +245,7 @@ export default function FeatureSection() {
   };
   return (
     <div
-      className="text-white pb-10 pt-12 h-screen   relative overflow-hidden bg-neutral-800"
+      className="text-white pb-10 pt-12 h-screen overflow-y-auto  relative overflow-hidden bg-neutral-800"
       style={{
         gridColumn: "span 7",
         gridRowStart: "first",
